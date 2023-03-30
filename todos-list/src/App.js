@@ -1,6 +1,7 @@
 import './App.css';
 import Header from "./MyComponents/Header";
 import {Todos} from "./MyComponents/Todos";
+import {AddTodo} from "./MyComponents/AddTodo";
 import {Footer} from "./MyComponents/Footer";
 import React, {useState} from "react";
 
@@ -12,7 +13,12 @@ const onDelete  = (todo)=>{
   // todos.splice(index, 1);
   setTodos(todos.filter((e)=>{
     return e!==todo;
-  }))
+  }));
+}
+
+const addTodo=(title,desc) =>{
+  console.log("I am adding title todo",title,desc)
+  
 }
   
   const [todos, setTodos] = useState([
@@ -36,6 +42,7 @@ const onDelete  = (todo)=>{
   return (
     <>
       <Header title="My Todos List" searchBar={false}/>
+      <AddTodo addTodo={addTodo}/>
       <Todos todos={todos} onDelete={onDelete}/>
       <Footer />
     </>
